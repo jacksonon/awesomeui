@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1434AE0F24E29FAF00C231F8 /* someui.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1434AE0E24E29FAF00C231F8 /* someui.gif */; };
+		1434AE1024E29FAF00C231F8 /* someui.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1434AE0E24E29FAF00C231F8 /* someui.gif */; };
+		14C7A9D624E2984E001668EE /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9D524E2984E001668EE /* ItemModel.swift */; };
+		14C7A9D724E2984E001668EE /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9D524E2984E001668EE /* ItemModel.swift */; };
+		14C7A9D924E298A0001668EE /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C7A9D824E298A0001668EE /* items.json */; };
+		14C7A9DA24E298A0001668EE /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C7A9D824E298A0001668EE /* items.json */; };
+		14C7A9DD24E2995B001668EE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9DC24E2995B001668EE /* Data.swift */; };
+		14C7A9DE24E2995B001668EE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9DC24E2995B001668EE /* Data.swift */; };
 		14E4C7B124E272FF004E5351 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E4C7B024E272FF004E5351 /* GroupView.swift */; };
 		14E4C7B224E272FF004E5351 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E4C7B024E272FF004E5351 /* GroupView.swift */; };
 		4C35474424E18C7F00FAA83D /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C35474324E18C7F00FAA83D /* Tests_iOS.swift */; };
@@ -41,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1434AE0E24E29FAF00C231F8 /* someui.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = someui.gif; sourceTree = "<group>"; };
+		14C7A9D524E2984E001668EE /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		14C7A9D824E298A0001668EE /* items.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
+		14C7A9DC24E2995B001668EE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		14E4C7B024E272FF004E5351 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		4C35472824E18C7E00FAA83D /* awesomeuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = awesomeuiApp.swift; sourceTree = "<group>"; };
 		4C35472924E18C7E00FAA83D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +104,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1434AE0B24E29F5500C231F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4C35472224E18C7E00FAA83D = {
 			isa = PBXGroup;
 			children = (
@@ -101,18 +120,23 @@
 				4C35474224E18C7F00FAA83D /* Tests iOS */,
 				4C35474D24E18C7F00FAA83D /* Tests macOS */,
 				4C35473024E18C7F00FAA83D /* Products */,
+				1434AE0B24E29F5500C231F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		4C35472724E18C7E00FAA83D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1434AE0E24E29FAF00C231F8 /* someui.gif */,
 				4C35472824E18C7E00FAA83D /* awesomeuiApp.swift */,
 				4C35472924E18C7E00FAA83D /* ContentView.swift */,
 				4C35472A24E18C7F00FAA83D /* Assets.xcassets */,
 				4C35476524E18D5B00FAA83D /* MenuListView.swift */,
 				4C35476824E18DFB00FAA83D /* DetailView.swift */,
 				14E4C7B024E272FF004E5351 /* GroupView.swift */,
+				14C7A9D524E2984E001668EE /* ItemModel.swift */,
+				14C7A9D824E298A0001668EE /* items.json */,
+				14C7A9DC24E2995B001668EE /* Data.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -179,6 +203,8 @@
 			dependencies = (
 			);
 			name = "awesomeui (iOS)";
+			packageProductDependencies = (
+			);
 			productName = "awesomeui (iOS)";
 			productReference = 4C35472F24E18C7F00FAA83D /* awesomeui.app */;
 			productType = "com.apple.product-type.application";
@@ -196,6 +222,8 @@
 			dependencies = (
 			);
 			name = "awesomeui (macOS)";
+			packageProductDependencies = (
+			);
 			productName = "awesomeui (macOS)";
 			productReference = 4C35473724E18C7F00FAA83D /* awesomeui.app */;
 			productType = "com.apple.product-type.application";
@@ -270,6 +298,8 @@
 				Base,
 			);
 			mainGroup = 4C35472224E18C7E00FAA83D;
+			packageReferences = (
+			);
 			productRefGroup = 4C35473024E18C7F00FAA83D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -287,7 +317,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14C7A9D924E298A0001668EE /* items.json in Resources */,
 				4C35475524E18C7F00FAA83D /* Assets.xcassets in Resources */,
+				1434AE0F24E29FAF00C231F8 /* someui.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +327,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14C7A9DA24E298A0001668EE /* items.json in Resources */,
 				4C35475624E18C7F00FAA83D /* Assets.xcassets in Resources */,
+				1434AE1024E29FAF00C231F8 /* someui.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +354,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14C7A9DD24E2995B001668EE /* Data.swift in Sources */,
+				14C7A9D624E2984E001668EE /* ItemModel.swift in Sources */,
 				4C35476624E18D5B00FAA83D /* MenuListView.swift in Sources */,
 				4C35476924E18DFB00FAA83D /* DetailView.swift in Sources */,
 				14E4C7B124E272FF004E5351 /* GroupView.swift in Sources */,
@@ -332,6 +368,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14C7A9DE24E2995B001668EE /* Data.swift in Sources */,
+				14C7A9D724E2984E001668EE /* ItemModel.swift in Sources */,
 				4C35476724E18D5B00FAA83D /* MenuListView.swift in Sources */,
 				4C35476A24E18DFB00FAA83D /* DetailView.swift in Sources */,
 				14E4C7B224E272FF004E5351 /* GroupView.swift in Sources */,

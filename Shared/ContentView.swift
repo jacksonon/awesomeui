@@ -36,16 +36,12 @@ struct ContentView: View {
     var list: some View {
         // 默认应该使用数据读取，暂时模拟
         List {
-//            ForEach(1...100) { (<#_#>) -> index in
-//
-//            }
-            
-            Grouping(title: "UIButton", icon: "capsule") {
-                DetailView(iconName: "tv.circle.fill", desc: "控件描述", code: "UIButton *btn = [[UIButton alloc] init]", linkUrl: "https://www.baidu.com")
+            ForEach(itemData, id: \.self) { item in
+                Grouping(title: item.titleName, icon: "capsule") {
+                    DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
+                }
             }
-            Grouping(title: "Text", icon: "text.aligncenter") {
-                DetailView(iconName: "tv.circle.fill", desc: "控件描述", code: "UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]\nUILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]\nUILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]\nUILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]\nUILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]\nUILabel *label = [[UILabel alloc] init]UILabel *label = [[UILabel alloc] init]", linkUrl: "https://www.baidu.com")
-            }
+
         }
     }
     

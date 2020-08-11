@@ -26,22 +26,29 @@ struct DetailView: View {
     /// 拷贝按钮弹窗
     @State private var showCopyTip = false
     
+    @State private var isAnimation = true
+    
+    @State private var useCode = ""
+    
     var body: some View {
         
         ScrollView {
             VStack (spacing: 10){
                 
                 HStack(spacing: 20) {
-                    VStack(spacing: 0) {
-                        Image(systemName: self.iconName ?? "")
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                    }
                     
+    
+                    
+                    Image(systemName: self.iconName ?? "")
+                        .resizable()
+                        .frame(width: 150, height: 150, alignment: .leading)
                     Text(self.desc!)
+                        .foregroundColor(.gray)
+                        .bold()
+                        .padding()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.yellow)
+                .padding()
                 
                 VStack {
                     Text(self.code!)
@@ -53,12 +60,17 @@ struct DetailView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
+                
+                TextEditor(text: self.$useCode)
+                    .frame(width: 300, height: 200)
+                
                 Button(action: {
                     print("copy code")
                     #if os(macOS)
                     let ppt = NSPasteboard.general
                     ppt.declareTypes([.string], owner: nil)
-                    ppt.setString(self.code!, forType: .string)
+//                    ppt.setString(self.code!, forType: .string)
+                    ppt.setString(self.useCode, forType: .string)
                     #else
                     let ppt = UIPasteboard.general
                     // TODO: 稍后支持
@@ -81,10 +93,30 @@ struct DetailView: View {
     }
 }
 
+
+
+/*
+ OC:代码格式化规则
+ 1. 遇到 左{ 添加换行符 + 2个空格 ，并且使用一个 stack保存入栈数 . stack + 1
+ 2. 遇到 ； 添加换行符
+ 3. 遇到 右} 左侧添加 (stakc - 1) * 2个空格，同时(stack数组减一)
+ 
+ func jw2oclint(_ ipts: String) -> String {
+     var rva = ""
+     var rvaarr = ipts.map{String($0)} // 字符转成数组
+     
+     for item in rvaarr {
+         <#code#>
+     }
+     
+     return rva;
+ }
+ */
+
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            DetailView(iconName: "tv.circle.fill", desc: "控件描述", code: "UIButton *btn = [[UIButton alloc] init]", linkUrl: "https://www.baidu.com")
+            DetailView(iconName: "tv.circle.fill", desc: "控件描述：该控件经常适用于各种基础视图的搭建，请谨慎使用该控件。在任何情况下，该控件都不会造成什么问题，但是不敢保证！！！", code: "UIButton *btn = [[UIButton alloc] init]", linkUrl: "https://www.baidu.com")
         }
     }
 }

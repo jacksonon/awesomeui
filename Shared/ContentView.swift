@@ -68,7 +68,7 @@ struct ContentView: View {
                     
                 }
                 Button("官方文档") {}
-                Button("查看项目地址") {}
+                Link("查看项目地址", destination: URL(string: "https://github.com/wang542413041/awesomeui")!)
             }
         })
         .navigationTitle("WMUIKit")

@@ -11,7 +11,12 @@ import SwiftUI
 struct awesomeuiApp: App {
     var body: some Scene {
         WindowGroup {
+            #if os(macOS)
             ContentView()
+                .frame(minWidth: 600, idealWidth: 800, maxWidth: .infinity, minHeight: 400, idealHeight: 600, maxHeight: .infinity)
+            #else
+            ContentView()
+            #endif
         }
     }
 }

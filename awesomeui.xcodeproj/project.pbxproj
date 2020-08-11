@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14E4C7B124E272FF004E5351 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E4C7B024E272FF004E5351 /* GroupView.swift */; };
+		14E4C7B224E272FF004E5351 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E4C7B024E272FF004E5351 /* GroupView.swift */; };
 		4C35474424E18C7F00FAA83D /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C35474324E18C7F00FAA83D /* Tests_iOS.swift */; };
 		4C35474F24E18C7F00FAA83D /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C35474E24E18C7F00FAA83D /* Tests_macOS.swift */; };
 		4C35475124E18C7F00FAA83D /* awesomeuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C35472824E18C7E00FAA83D /* awesomeuiApp.swift */; };
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14E4C7B024E272FF004E5351 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		4C35472824E18C7E00FAA83D /* awesomeuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = awesomeuiApp.swift; sourceTree = "<group>"; };
 		4C35472924E18C7E00FAA83D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4C35472A24E18C7F00FAA83D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 				4C35472A24E18C7F00FAA83D /* Assets.xcassets */,
 				4C35476524E18D5B00FAA83D /* MenuListView.swift */,
 				4C35476824E18DFB00FAA83D /* DetailView.swift */,
+				14E4C7B024E272FF004E5351 /* GroupView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -318,6 +322,7 @@
 			files = (
 				4C35476624E18D5B00FAA83D /* MenuListView.swift in Sources */,
 				4C35476924E18DFB00FAA83D /* DetailView.swift in Sources */,
+				14E4C7B124E272FF004E5351 /* GroupView.swift in Sources */,
 				4C35475324E18C7F00FAA83D /* ContentView.swift in Sources */,
 				4C35475124E18C7F00FAA83D /* awesomeuiApp.swift in Sources */,
 			);
@@ -329,6 +334,7 @@
 			files = (
 				4C35476724E18D5B00FAA83D /* MenuListView.swift in Sources */,
 				4C35476A24E18DFB00FAA83D /* DetailView.swift in Sources */,
+				14E4C7B224E272FF004E5351 /* GroupView.swift in Sources */,
 				4C35475424E18C7F00FAA83D /* ContentView.swift in Sources */,
 				4C35475224E18C7F00FAA83D /* awesomeuiApp.swift in Sources */,
 			);

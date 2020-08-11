@@ -24,6 +24,7 @@ struct MenuListView: View {
                 }
                 .background(Color.green)
             }
+            .listStyle(SidebarListStyle())
         }
     }
 }

@@ -51,7 +51,7 @@ struct DetailView: View {
                 .padding()
                 
                 VStack {
-                    Text(self.code!)
+                    Text(jw2oclint(self.code!))
                         .bold()
                         .foregroundColor(.black)
 //                        .lineLimit(0)
@@ -61,16 +61,14 @@ struct DetailView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
                 
-                TextEditor(text: self.$useCode)
-                    .frame(width: 300, height: 200)
                 
                 Button(action: {
                     print("copy code")
                     #if os(macOS)
                     let ppt = NSPasteboard.general
                     ppt.declareTypes([.string], owner: nil)
-//                    ppt.setString(self.code!, forType: .string)
-                    ppt.setString(self.useCode, forType: .string)
+                    ppt.setString(jw2oclint(self.code!), forType: .string)
+//                    ppt.setString(self.useCode, forType: .string)
                     #else
                     let ppt = UIPasteboard.general
                     // TODO: 稍后支持
@@ -93,7 +91,52 @@ struct DetailView: View {
     }
 }
 
-
+func jw2oclint(_ ipts: String) -> String {
+    var rvaarr = ipts.map{String($0)} // 字符转成数组
+    
+    var lstack = 0
+    var rstack = 0
+    var fstack = 0
+    var tstack = 0
+    
+    for (index, item) in rvaarr.enumerated() {
+        // print("\(item) => \(index)")
+        if item == "{" {
+            let uindex = index + lstack + rstack + fstack
+            lstack += 1
+            var istr = ""
+            print(lstack)
+            if lstack >= 1 {
+                for _ in 0...lstack {
+                    istr += "  "
+                }
+            }
+            rvaarr.insert("\n\(istr)", at: uindex + 1)
+            tstack += 1
+        }
+        if item == "}" {
+            let uindex = index + lstack + rstack + fstack
+            rstack += 1
+            var istr = ""
+            for _ in 0..<tstack {
+                istr += "  "
+            }
+            tstack -= 1
+            rvaarr.insert("\n\(istr)", at: uindex + 1)
+        }
+        if item == ";" {
+            let uindex = index + lstack + rstack + fstack
+            fstack += 1
+            var istr = ""
+            for _ in 0...lstack {
+                istr += "  "
+            }
+            rvaarr.insert("\n\(istr)", at: uindex + 1)
+        }
+    }
+    
+    return rvaarr.joined();
+}
 
 /*
  OC:代码格式化规则

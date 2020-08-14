@@ -51,7 +51,44 @@ struct CodeInput: View {
                 let pathUse = path + "/codejson.json"
                 let url = URL(fileURLWithPath: pathUse)
                 
-                // 3. 写入文件
+                // 3.0
+                let itemModel = ItemModel(titleName: "模拟视图标题", titleIcon: "", iconName: "", desc: "这是一段可以快速创建SwiftUI预览的代码", code: self.codeStr)
+                
+                // 模拟3组数据
+                var uarr = [ItemModel]()
+                for _ in 0..<3 {
+                    uarr.append(itemModel)
+                }
+                
+                
+                let jsonEncoder = JSONEncoder()
+                let mdata = try? jsonEncoder.encode(uarr)
+                try! mdata?.write(to: url, options: .atomic)
+                
+                let rdata = NSData(contentsOf: url)
+                let array = try? JSONSerialization.jsonObject(with: rdata! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                
+                // 模拟解码👍
+                let jd = JSONDecoder()
+                let uar: [ItemModel] = try! jd.decode([ItemModel].self, from: rdata as! Data)
+                print(uar)
+                self.ustr = uar[0].code
+
+                
+                /* 模拟解码笨蛋方法
+                for item in array as! [Dictionary<String, Any>]  {
+                    // 解码
+                    let jsonDecoder = JSONDecoder()
+                    let jsonData = try? JSONSerialization.data(withJSONObject: item, options: [])
+                    let model: ItemModel = try! jsonDecoder.decode(ItemModel.self, from: jsonData!)
+                    
+                    print(model)
+                    self.ustr = model.code
+                }
+ */
+                
+                
+                /* 3. 写入文件
                 let data = try! JSONSerialization.data(withJSONObject: [self.codeStr], options: JSONSerialization.WritingOptions.prettyPrinted)
                 try! data.write(to: url, options: .atomic)
 
@@ -61,6 +98,8 @@ struct CodeInput: View {
                 let array = try? JSONSerialization.jsonObject(with: rdata! as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String]
                 print(array?[0] ?? "")
                 self.ustr = array?[0] ?? ""
+ 
+                 */
             }
             
             Text(ustr)

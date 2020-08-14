@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1434AE0F24E29FAF00C231F8 /* someui.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1434AE0E24E29FAF00C231F8 /* someui.gif */; };
 		1434AE1024E29FAF00C231F8 /* someui.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1434AE0E24E29FAF00C231F8 /* someui.gif */; };
+		1434AE1F24E6675D00C231F8 /* CodeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1434AE1E24E6675D00C231F8 /* CodeInput.swift */; };
+		1434AE2024E6675D00C231F8 /* CodeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1434AE1E24E6675D00C231F8 /* CodeInput.swift */; };
 		14C7A9D624E2984E001668EE /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9D524E2984E001668EE /* ItemModel.swift */; };
 		14C7A9D724E2984E001668EE /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9D524E2984E001668EE /* ItemModel.swift */; };
 		14C7A9D924E298A0001668EE /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C7A9D824E298A0001668EE /* items.json */; };
@@ -50,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		1434AE0E24E29FAF00C231F8 /* someui.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = someui.gif; sourceTree = "<group>"; };
+		1434AE1E24E6675D00C231F8 /* CodeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInput.swift; sourceTree = "<group>"; };
 		14C7A9D524E2984E001668EE /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		14C7A9D824E298A0001668EE /* items.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
 		14C7A9DC24E2995B001668EE /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 				14C7A9D524E2984E001668EE /* ItemModel.swift */,
 				14C7A9D824E298A0001668EE /* items.json */,
 				14C7A9DC24E2995B001668EE /* Data.swift */,
+				1434AE1E24E6675D00C231F8 /* CodeInput.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -359,6 +363,7 @@
 				4C35476624E18D5B00FAA83D /* MenuListView.swift in Sources */,
 				4C35476924E18DFB00FAA83D /* DetailView.swift in Sources */,
 				14E4C7B124E272FF004E5351 /* GroupView.swift in Sources */,
+				1434AE1F24E6675D00C231F8 /* CodeInput.swift in Sources */,
 				4C35475324E18C7F00FAA83D /* ContentView.swift in Sources */,
 				4C35475124E18C7F00FAA83D /* awesomeuiApp.swift in Sources */,
 			);
@@ -373,6 +378,7 @@
 				4C35476724E18D5B00FAA83D /* MenuListView.swift in Sources */,
 				4C35476A24E18DFB00FAA83D /* DetailView.swift in Sources */,
 				14E4C7B224E272FF004E5351 /* GroupView.swift in Sources */,
+				1434AE2024E6675D00C231F8 /* CodeInput.swift in Sources */,
 				4C35475424E18C7F00FAA83D /* ContentView.swift in Sources */,
 				4C35475224E18C7F00FAA83D /* awesomeuiApp.swift in Sources */,
 			);

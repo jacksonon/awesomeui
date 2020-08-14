@@ -38,7 +38,8 @@ struct ContentView: View {
         List {
             ForEach(itemData, id: \.self) { item in
                 Grouping(title: item.titleName, icon: "capsule") {
-                    DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
+                    CodeInput()
+//                    DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
                 }
             }
 

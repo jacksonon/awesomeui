@@ -10,4 +10,4 @@
 
 ![拷贝代码](https://github.com/wang542413041/awesomeui/blob/master/Docs/codecopy.png)
 ![拷贝结果](https://github.com/wang542413041/awesomeui/blob/master/Docs/copysuccess.png)
-![代码录入]((https://github.com/wang542413041/awesomeui/blob/master/Docs/codeinput.png)
+![代码录入](https://github.com/wang542413041/awesomeui/blob/master/Docs/codeinput.png)

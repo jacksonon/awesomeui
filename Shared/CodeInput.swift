@@ -60,13 +60,15 @@ struct CodeInput: View {
                     uarr.append(itemModel)
                 }
                 
-                
+                // 模拟多数据写入
                 let jsonEncoder = JSONEncoder()
                 let mdata = try? jsonEncoder.encode(uarr)
                 try! mdata?.write(to: url, options: .atomic)
                 
+                // 获取数据
                 let rdata = NSData(contentsOf: url)
-                let array = try? JSONSerialization.jsonObject(with: rdata! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                
+            
                 
                 // 模拟解码👍
                 let jd = JSONDecoder()
@@ -76,6 +78,8 @@ struct CodeInput: View {
 
                 
                 /* 模拟解码笨蛋方法
+                let array = try? JSONSerialization.jsonObject(with: rdata! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                 
                 for item in array as! [Dictionary<String, Any>]  {
                     // 解码
                     let jsonDecoder = JSONDecoder()
@@ -88,7 +92,7 @@ struct CodeInput: View {
  */
                 
                 
-                /* 3. 写入文件
+                /* 3. 写入文件：
                 let data = try! JSONSerialization.data(withJSONObject: [self.codeStr], options: JSONSerialization.WritingOptions.prettyPrinted)
                 try! data.write(to: url, options: .atomic)
 

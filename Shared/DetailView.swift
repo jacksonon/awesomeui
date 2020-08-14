@@ -51,7 +51,8 @@ struct DetailView: View {
                 .padding()
                 
                 VStack {
-                    Text(jw2oclint(self.code!))
+//                    Text(jw2oclint(self.code!))
+                    Text(self.code!)
                         .bold()
                         .foregroundColor(.black)
 //                        .lineLimit(0)
@@ -67,8 +68,8 @@ struct DetailView: View {
                     #if os(macOS)
                     let ppt = NSPasteboard.general
                     ppt.declareTypes([.string], owner: nil)
-                    ppt.setString(jw2oclint(self.code!), forType: .string)
-//                    ppt.setString(self.useCode, forType: .string)
+//                    ppt.setString(jw2oclint(self.code!), forType: .string)
+                    ppt.setString(self.code!, forType: .string)
                     #else
                     let ppt = UIPasteboard.general
                     // TODO: 稍后支持
@@ -91,6 +92,7 @@ struct DetailView: View {
     }
 }
 
+// 代码格式化
 func jw2oclint(_ ipts: String) -> String {
     var rvaarr = ipts.map{String($0)} // 字符转成数组
     

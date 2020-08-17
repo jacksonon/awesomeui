@@ -20,17 +20,20 @@ struct CodeInput: View {
     
     @Binding var uitemData: [ItemModel]
 //    @EnvironmentObject var uitemData: UserData
-    @State private var codeStr: String = "请将常用代码粘贴到此处"
     @State private var ustr: String = "读取到的数据"
     @Binding var showCodeInput: Bool
+    
+    @State private var codeTitle: String = ""
+    @State private var codeStr: String = "请将常用代码粘贴到此处，录入代码将在下次启动时生效"
+    
     
     func writeToFile(_ someModel: ItemModel) {
         /* 首先读取文件原本内容：使用沙盒文件；应用在一开始的时候读取文件到沙盒，如果有添加，请在github上更新替换的文件；【一般除了我也不会有人修改这个文件】
          */
         // 获取本地现有的文件
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)
         let path = paths[0]
-        let pathUse = path + "/codejson.json"
+        let pathUse = path + "/codes.json"
         let url = URL(fileURLWithPath: pathUse)
 //        let rdata = try? Data(contentsOf: url)
 //        let jd = JSONDecoder()
@@ -48,6 +51,10 @@ struct CodeInput: View {
         
         // 同时在当前界面修改数据
 //        self.uitemData = uar
+        self.closePage()
+    }
+    
+    func closePage() {
         self.showCodeInput = false
     }
     
@@ -55,13 +62,22 @@ struct CodeInput: View {
         
         VStack {
             // 录入代码
-            Text("代码录入")
+            HStack {
+                Text("代码录入")
+                Button("关闭界面") {
+                    self.closePage()
+                }
+            }
+            
+            TextField("输入代码块名称", text: $codeTitle)
+            
+            
             TextEditor(text: $codeStr)
                 .frame(width: 300, height: 200)
             
             // 拷贝diamante
             Button("保存代码到json共享文件") {
-                let itemModel = ItemModel(titleName: "模拟视图标题", titleIcon: "", iconName: "", desc: "这是一段可以快速创建SwiftUI预览的代码", code: self.codeStr)
+                let itemModel = ItemModel(titleName: self.codeTitle, titleIcon: "", iconName: "", desc: "这是一段可以快速创建SwiftUI预览的代码", code: self.codeStr)
                 self.writeToFile(itemModel)
             }
         }

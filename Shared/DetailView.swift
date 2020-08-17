@@ -87,7 +87,6 @@ struct DetailView: View {
                     Alert(title: Text("提示"), message: Text("复制代码成功，可以去XCode愉快的粘贴了！！！"), dismissButton: .default(Text("👌")))
                 })
             }
-            
         }
     }
 }

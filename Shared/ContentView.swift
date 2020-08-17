@@ -15,7 +15,7 @@ func tomakeawindow() {
 }
  */
 
-/// 定制左侧单个Item对应视图
+/* 定制左侧单个Item对应视图
 struct Grouping<Content: View>: View {
     var title: String
     var icon: String
@@ -35,6 +35,7 @@ struct Grouping<Content: View>: View {
             })
     }
 }
+ */
 
 struct ContentView: View {
     
@@ -46,6 +47,7 @@ struct ContentView: View {
 //    @EnvironmentObject var userData: UserData
     
     @State var showCodeInput: Bool = false
+    @State var showDetail: Bool = false
     
     func flushView() {
         self.uitemData.shuffle()
@@ -56,14 +58,30 @@ struct ContentView: View {
         // 默认应该使用数据读取，暂时模拟
         List {
             ForEach(self.uitemData, id: \.self) { item in
-//            ForEach(self.userData.sharedData, id: \.self) { item in
+                
+                /*
                 Grouping(title: item.titleName, icon: "capsule") {
                     DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
                 }
+                */
+                
+                NavigationLink(
+                    destination: GroupView(title: item.titleName, content: {
+                        DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
+                            .navigationTitle(item.titleName)
+                    }),
+                    label: {
+                        #if os(iOS)
+                        Label(title, systemImage: icon)
+                            .font(.headline)
+                            .padding(.vertical, 8)
+                        #else
+                        Label(item.titleName, systemImage: "capsule")
+                        #endif
+                    })
             }
         }
     }
-    
     
     var body: some View {
         NavigationView {
@@ -76,6 +94,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             #endif
         }
+        .navigationTitle("代码拷贝神器")
         .accentColor(.accentColor)
         .toolbar(content: {
             HStack {
@@ -93,6 +112,9 @@ struct ContentView: View {
                     self.showCodeInput.toggle()
                 }.sheet(isPresented: $showCodeInput) {
                     CodeInput(uitemData: $uitemData, showCodeInput: $showCodeInput)
+                }
+                Button("重载界面") {
+                    self.showDetail = true
                 }
                 Link("查看项目地址", destination: URL(string: "https://github.com/wang542413041/awesomeui")!)
             }.frame(alignment: .center)

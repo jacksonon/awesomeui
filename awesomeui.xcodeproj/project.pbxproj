@@ -17,8 +17,6 @@
 		1469645D24EA61B30083B489 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1469645B24EA61B30083B489 /* UserData.swift */; };
 		14C7A9D624E2984E001668EE /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9D524E2984E001668EE /* ItemModel.swift */; };
 		14C7A9D724E2984E001668EE /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9D524E2984E001668EE /* ItemModel.swift */; };
-		14C7A9D924E298A0001668EE /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C7A9D824E298A0001668EE /* items.json */; };
-		14C7A9DA24E298A0001668EE /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C7A9D824E298A0001668EE /* items.json */; };
 		14C7A9DD24E2995B001668EE /* UData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9DC24E2995B001668EE /* UData.swift */; };
 		14C7A9DE24E2995B001668EE /* UData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C7A9DC24E2995B001668EE /* UData.swift */; };
 		14E4C7B124E272FF004E5351 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E4C7B024E272FF004E5351 /* GroupView.swift */; };
@@ -60,7 +58,6 @@
 		1434AE2124E6816000C231F8 /* CodeCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCreate.swift; sourceTree = "<group>"; };
 		1469645B24EA61B30083B489 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		14C7A9D524E2984E001668EE /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
-		14C7A9D824E298A0001668EE /* items.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
 		14C7A9DC24E2995B001668EE /* UData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UData.swift; sourceTree = "<group>"; };
 		14E4C7B024E272FF004E5351 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		4C35472824E18C7E00FAA83D /* awesomeuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = awesomeuiApp.swift; sourceTree = "<group>"; };
@@ -144,7 +141,6 @@
 				4C35476824E18DFB00FAA83D /* DetailView.swift */,
 				14E4C7B024E272FF004E5351 /* GroupView.swift */,
 				14C7A9D524E2984E001668EE /* ItemModel.swift */,
-				14C7A9D824E298A0001668EE /* items.json */,
 				14C7A9DC24E2995B001668EE /* UData.swift */,
 				1434AE1E24E6675D00C231F8 /* CodeInput.swift */,
 				1434AE2124E6816000C231F8 /* CodeCreate.swift */,
@@ -329,7 +325,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14C7A9D924E298A0001668EE /* items.json in Resources */,
 				4C35475524E18C7F00FAA83D /* Assets.xcassets in Resources */,
 				1434AE0F24E29FAF00C231F8 /* someui.gif in Resources */,
 			);
@@ -339,7 +334,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14C7A9DA24E298A0001668EE /* items.json in Resources */,
 				4C35475624E18C7F00FAA83D /* Assets.xcassets in Resources */,
 				1434AE1024E29FAF00C231F8 /* someui.gif in Resources */,
 			);
@@ -596,7 +590,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangjiawei.awesomeui;
 				PRODUCT_NAME = awesomeui;
 				SDKROOT = macosx;
@@ -618,7 +612,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.16;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangjiawei.awesomeui;
 				PRODUCT_NAME = awesomeui;
 				SDKROOT = macosx;

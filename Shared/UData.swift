@@ -22,10 +22,11 @@ var itemData: [ItemModel] = cload()
 // 加载共享文件
 func cload<T: Decodable>() -> T {
     let data: Data
-    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+    let paths = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)
     let path = paths[0]
-    let fp = path + "/codejson.json"
+    let fp = path + "/codes.json"
     let file = URL(fileURLWithPath: fp)
+    print(fp)
     do {
         data = try Data(contentsOf: file)
     } catch {

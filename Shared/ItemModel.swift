@@ -14,6 +14,3 @@ struct ItemModel: Hashable, Codable { // Identifiable
     var desc: String
     var code: String
 }
-
-
-

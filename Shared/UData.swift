@@ -6,9 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
-let itemData: [ItemModel] = cload()
+//@ObservableObject let itemData: [ItemModel] = cload()
 
+// 从文件加载
+//let itemData: [ItemModel] = mload("items.json")
+
+var itemData: [ItemModel] = cload()
+
+//final class UData: ObservableObject {
+//    @Published var itemData: [ItemModel] = cload()
+//}
+
+// 加载共享文件
 func cload<T: Decodable>() -> T {
     let data: Data
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -28,7 +39,8 @@ func cload<T: Decodable>() -> T {
     }
 }
 
-func load<T: Decodable>(_ filename: String) -> T {
+// 使用这个文件写入缓存中【还需要文件缓存到另一个】
+func mload<T: Decodable>(_ filename: String) -> T {
     let data: Data
     guard let file = Bundle.main.url(forResource: filename, withExtension: nil) else {
         fatalError("找不到文件")

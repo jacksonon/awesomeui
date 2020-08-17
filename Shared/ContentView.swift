@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+/*
 func tomakeawindow() {
     let windowRef = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 100, height: 100), styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView], backing: .buffered, defer: false)
-    windowRef.contentView = NSHostingView(rootView: CodeInput())
+//    windowRef.contentView = NSHostingView(rootView: CodeInput())
     windowRef.makeKeyAndOrderFront(nil)
 }
+ */
 
 /// 定制左侧单个Item对应视图
 struct Grouping<Content: View>: View {
@@ -38,11 +40,21 @@ struct ContentView: View {
     
     @State private var isCodeInput: Bool = false
     
+    // 绑定数据
+    @State private var uitemData: [ItemModel] = cload()
+//    @EnvironmentObject var uitemData: [ItemModel] = mload("items.json")
+//    @EnvironmentObject var userData: UserData
+    
+    func flushView() {
+        self.uitemData.shuffle()
+    }
+    
     /// 定制左侧列表视图
     var list: some View {
         // 默认应该使用数据读取，暂时模拟
         List {
-            ForEach(itemData, id: \.self) { item in
+            ForEach(self.uitemData, id: \.self) { item in
+//            ForEach(self.userData.sharedData, id: \.self) { item in
                 Grouping(title: item.titleName, icon: "capsule") {
                     DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
                 }
@@ -50,7 +62,7 @@ struct ContentView: View {
 
             // 创建其它类别的界面
             Grouping(title: "代码录入", icon: "capsule") {
-                CodeInput()
+                CodeInput(uitemData: self.$uitemData)
             }
             
             Grouping(title: "代码生成", icon: "capsule") {
@@ -78,10 +90,9 @@ struct ContentView: View {
                     .frame(alignment: .leading)
                     .font(.subheadline)
                     .foregroundColor(.orange)
-                Button("查看文档") {
-                    
+                Button("重启【代码录入后】") {
+                    exit(0)
                 }
-                Button("官方文档") {}
                 Link("查看项目地址", destination: URL(string: "https://github.com/wang542413041/awesomeui")!)
             }.frame(alignment: .center)
         })

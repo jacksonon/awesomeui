@@ -60,7 +60,7 @@ struct ContentView: View {
                 Grouping(title: item.titleName, icon: "capsule") {
                     DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
                 }
-            }如
+            }
         }
     }
     

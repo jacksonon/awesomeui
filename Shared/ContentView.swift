@@ -45,6 +45,8 @@ struct ContentView: View {
 //    @EnvironmentObject var uitemData: [ItemModel] = mload("items.json")
 //    @EnvironmentObject var userData: UserData
     
+    @State var showCodeInput: Bool = false
+    
     func flushView() {
         self.uitemData.shuffle()
     }
@@ -58,16 +60,7 @@ struct ContentView: View {
                 Grouping(title: item.titleName, icon: "capsule") {
                     DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
                 }
-            }
-
-            // 创建其它类别的界面
-            Grouping(title: "代码录入", icon: "capsule") {
-                CodeInput(uitemData: self.$uitemData)
-            }
-            
-            Grouping(title: "代码生成", icon: "capsule") {
-                CodeCreate()
-            }
+            }如
         }
     }
     
@@ -93,10 +86,27 @@ struct ContentView: View {
                 Button("重启【代码录入后】") {
                     exit(0)
                 }
+                Button("显示/隐藏SideBar") {
+                    self.toggleSidebar()
+                }
+                Button("录入代码") {
+                    self.showCodeInput.toggle()
+                }.sheet(isPresented: $showCodeInput) {
+                    CodeInput(uitemData: $uitemData, showCodeInput: $showCodeInput)
+                }
                 Link("查看项目地址", destination: URL(string: "https://github.com/wang542413041/awesomeui")!)
             }.frame(alignment: .center)
         })
         // .navigationSubtitle("内部UI代码示例")
+    }
+    
+    
+    
+    private func toggleSidebar() {
+        #if os(iOS)
+        #else
+        NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
+        #endif
     }
 }
 

@@ -22,6 +22,7 @@ struct CodeInput: View {
 //    @EnvironmentObject var uitemData: UserData
     @State private var codeStr: String = "请将常用代码粘贴到此处"
     @State private var ustr: String = "读取到的数据"
+    @Binding var showCodeInput: Bool
     
     func writeToFile(_ someModel: ItemModel) {
         /* 首先读取文件原本内容：使用沙盒文件；应用在一开始的时候读取文件到沙盒，如果有添加，请在github上更新替换的文件；【一般除了我也不会有人修改这个文件】
@@ -47,6 +48,7 @@ struct CodeInput: View {
         
         // 同时在当前界面修改数据
 //        self.uitemData = uar
+        self.showCodeInput = false
     }
     
     var body: some View {

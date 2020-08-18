@@ -19,7 +19,6 @@ import SwiftUI
 struct CodeInput: View {
     
     @Binding var uitemData: [ItemModel]
-//    @EnvironmentObject var uitemData: UserData
     @State private var ustr: String = "读取到的数据"
     @Binding var showCodeInput: Bool
     
@@ -35,22 +34,12 @@ struct CodeInput: View {
         let path = paths[0]
         let pathUse = path + "/codes.json"
         let url = URL(fileURLWithPath: pathUse)
-//        let rdata = try? Data(contentsOf: url)
-//        let jd = JSONDecoder()
-//        var uar: [ItemModel] = []
-//        if let udata = rdata {
-//            uar = try! jd.decode([ItemModel].self, from: udata)
-//        }
-        
         // 然后追加新数据到文件，之后再写入文件
         self.uitemData.append(someModel)
-//        self.uitemData.sharedData.append(someModel)
         let jsonEncoder = JSONEncoder()
         let mdata = try? jsonEncoder.encode(self.uitemData)
         try! mdata?.write(to: url, options: .atomic)
         
-        // 同时在当前界面修改数据
-//        self.uitemData = uar
         self.closePage()
     }
     

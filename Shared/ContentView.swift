@@ -39,35 +39,28 @@ struct Grouping<Content: View>: View {
 
 struct ContentView: View {
     
+    // 初始化数据绑定
+    init() {
+        self.currentData = uitemData[0]
+    }
+    
     @State private var isCodeInput: Bool = false
     
     // 绑定数据
     @State private var uitemData: [ItemModel] = cload()
-//    @EnvironmentObject var uitemData: [ItemModel] = mload("items.json")
-//    @EnvironmentObject var userData: UserData
-    
     @State var showCodeInput: Bool = false
-    @State var showDetail: Bool = false
-    
-    func flushView() {
-        self.uitemData.shuffle()
-    }
+    @State private var currentData: ItemModel?
     
     /// 定制左侧列表视图
     var list: some View {
         // 默认应该使用数据读取，暂时模拟
         List {
             ForEach(self.uitemData, id: \.self) { item in
-                
-                /*
-                Grouping(title: item.titleName, icon: "capsule") {
-                    DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
-                }
-                */
+                #if os(iOS)
                 
                 NavigationLink(
                     destination: GroupView(title: item.titleName, content: {
-                        DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
+                        DetailView(sitem: &item)
                             .navigationTitle(item.titleName)
                     }),
                     label: {
@@ -79,6 +72,22 @@ struct ContentView: View {
                         Label(item.titleName, systemImage: "capsule")
                         #endif
                     })
+                
+                #else
+                Button(item.titleName) {
+                    print("选中\(item.code)")
+                    self.currentData = item
+                }
+                #endif
+                
+                
+                
+                /*
+                Grouping(title: item.titleName, icon: "capsule") {
+                    DetailView(iconName: "tv.circle.fill", desc: item.desc, code: item.code, linkUrl: "https://www.baidu.com")
+                }
+                */
+                
             }
         }
     }
@@ -89,8 +98,8 @@ struct ContentView: View {
             list.navigationTitle("WMUIKit")
             Text("选择一个视图")
             #elseif os(OSX)
-            list.listStyle(SidebarListStyle())
-            Text("选择一个视图")
+            list // .listStyle(SidebarListStyle())
+            DetailView(sitem: self.$currentData)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             #endif
         }
@@ -98,13 +107,6 @@ struct ContentView: View {
         .accentColor(.accentColor)
         .toolbar(content: {
             HStack {
-                Text("【基于SwiftUI构建】")
-                    .frame(alignment: .leading)
-                    .font(.subheadline)
-                    .foregroundColor(.orange)
-                Button("重启【代码录入后】") {
-                    exit(0)
-                }
                 Button("显示/隐藏SideBar") {
                     self.toggleSidebar()
                 }
@@ -113,17 +115,13 @@ struct ContentView: View {
                 }.sheet(isPresented: $showCodeInput) {
                     CodeInput(uitemData: $uitemData, showCodeInput: $showCodeInput)
                 }
-                Button("重载界面") {
-                    self.showDetail = true
-                }
                 Link("查看项目地址", destination: URL(string: "https://github.com/wang542413041/awesomeui")!)
             }.frame(alignment: .center)
         })
         // .navigationSubtitle("内部UI代码示例")
     }
     
-    
-    
+    // 显示隐藏sidebar
     private func toggleSidebar() {
         #if os(iOS)
         #else

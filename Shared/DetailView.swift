@@ -12,16 +12,8 @@ import CoreServices
 struct DetailView: View {
     
     /// 展示效果图
-    @State var iconName: String?
+    @Binding var sitem: ItemModel?
     
-    /// 功能描述
-    @State var desc: String?
-    
-    /// 快捷代码
-    @State var code: String?
-    
-    /// 对应链接
-    @State var linkUrl: String?
     
     /// 拷贝按钮弹窗
     @State private var showCopyTip = false
@@ -39,10 +31,10 @@ struct DetailView: View {
                     
     
                     
-                    Image(systemName: self.iconName ?? "")
+                    Image(systemName: self.sitem?.iconName ?? "")
                         .resizable()
                         .frame(width: 150, height: 150, alignment: .leading)
-                    Text(self.desc!)
+                    Text(self.sitem?.desc ?? "")
                         .foregroundColor(.gray)
                         .bold()
                         .padding()
@@ -52,7 +44,7 @@ struct DetailView: View {
                 
                 VStack {
 //                    Text(jw2oclint(self.code!))
-                    Text(self.code!)
+                    Text(self.sitem?.code ?? "")
                         .bold()
                         .foregroundColor(.black)
 //                        .lineLimit(0)
@@ -69,7 +61,7 @@ struct DetailView: View {
                     let ppt = NSPasteboard.general
                     ppt.declareTypes([.string], owner: nil)
 //                    ppt.setString(jw2oclint(self.code!), forType: .string)
-                    ppt.setString(self.code!, forType: .string)
+                    ppt.setString(self.sitem?.code ?? "", forType: .string)
                     #else
                     let ppt = UIPasteboard.general
                     // TODO: 稍后支持
@@ -156,10 +148,13 @@ func jw2oclint(_ ipts: String) -> String {
  }
  */
 
+/*
 struct DetailView_Previews: PreviewProvider {
+    @State private var sitem = itemData[0]
     static var previews: some View {
         Group {
-            DetailView(iconName: "tv.circle.fill", desc: "控件描述：该控件经常适用于各种基础视图的搭建，请谨慎使用该控件。在任何情况下，该控件都不会造成什么问题，但是不敢保证！！！", code: "UIButton *btn = [[UIButton alloc] init]", linkUrl: "https://www.baidu.com")
+            DetailView(sitem: $items[0])
         }
     }
 }
+*/
